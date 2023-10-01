@@ -6,8 +6,6 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   imports: [
@@ -17,12 +15,10 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule,
-    AuthModule
+    AppRoutingModule
   ],
   declarations: [
-    AppComponent,
-    AdminLayoutComponent
+    AppComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

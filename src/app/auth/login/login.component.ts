@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { AuthService } from 'app/services/auth/auth.service';
 import { CryptoServiceLS } from 'app/utils/cryptojs/crypto.service';
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private authService: AuthService,
     private cryptUtil: CryptoServiceLS
   ) { }
@@ -32,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.authService.sendLogin().subscribe(
       ({ data }) => {
         if(this.processingLogin(data)){
-
+          this.router.navigate(['/home']);
         };
       }
     )

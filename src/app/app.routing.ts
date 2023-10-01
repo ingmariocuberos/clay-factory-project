@@ -4,22 +4,20 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes =[
   {
-    path: '',
+    path: 'auth',
     loadChildren: ()=> import('./auth/auth.module')
                         .then( m => m.AuthModule) 
   }, {
-    path: 'algo',
-    component: AdminLayoutComponent,
-    children: [{
-      path: '',
-      loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
-    }]
+    path: '',
+    canActivateChild: [AuthGuard],
+    loadChildren: ()=> import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
   }, {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'auth'
   }
 ];
 
