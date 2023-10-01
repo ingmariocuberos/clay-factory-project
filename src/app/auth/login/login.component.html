@@ -1,0 +1,19 @@
+<div class="login-container">
+    <h1>Iniciar Sesión</h1>
+    
+    <form class="login-form" [formGroup]="loginForm">
+        <input type="text" formControlName="username">
+        <input type="text" formControlName="password">
+        <button (click)="startLogin()">Acceder</button>
+    </form>
+
+    <swal
+        #incorrectPass
+        title="Credenciales incorrectas"
+        text="Verifique su nombre de usuario y contraseña"
+        icon="error"
+        focusCancel="true"
+        showCancelButton="true"
+        (confirm)="resetForm()">
+    </swal>
+</div>
